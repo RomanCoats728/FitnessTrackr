@@ -2,16 +2,18 @@ const client = require('./client');
 const util = require('./util');
 
 // database functions
+//Get - /api/activities - get all activities
 async function getAllActivities(){
   try {
     const {rows} = await client.query(`
       SELECT * FROM activities;
     `);
     return rows;
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    throw err;
   }
 }
+// GET - /api/activity/:id - get all activities by id
 async function getActivityById(id){
   try {
     const {rows: [activity]} = await client.query(`
@@ -23,6 +25,7 @@ async function getActivityById(id){
     throw error;
   }
 }
+//Get- /api/activity/:name - Get all activityies by name
 async function getActivityByName(name){
   try {
     const {rows: [activity]} = await client.query(`
